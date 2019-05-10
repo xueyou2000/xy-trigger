@@ -88,12 +88,16 @@ export function Trigger(props: TriggerProps) {
         }
     }
 
+    function clickHandle(e: React.MouseEvent<HTMLElement>) {
+        e.stopPropagation();
+    }
+
     return (
         <React.Fragment>
             {TriggerWrap(children, triggerRef)}
             {renderPortal(
                 destroyPopupOnHide === true && (!visible && state === EXITED) ? null : (
-                    <div className={classString} style={Object.assign({}, style, style1)} ref={ref}>
+                    <div className={classString} style={Object.assign({}, style, style1)} ref={ref} onClick={clickHandle}>
                         {popup}
                     </div>
                 )
