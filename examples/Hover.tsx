@@ -23,8 +23,16 @@ export default function() {
 
     return (
         <div>
-            <Trigger popup={list} popupAlign={{ overflow: { adjust: false, flip: true } }} action={["click"]}>
-                <button>按钮</button>
+            <Trigger popup={list} action={["hover"]}>
+                <button>hover</button>
+            </Trigger>
+
+            <Trigger popup={list} action={["focus"]}>
+                <button>focus</button>
+            </Trigger>
+
+            <Trigger popup={list} action={["contextMenu"]}>
+                <button>contextMenu</button>
             </Trigger>
         </div>
     );

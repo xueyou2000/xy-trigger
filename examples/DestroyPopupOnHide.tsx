@@ -23,7 +23,7 @@ export default function() {
 
     return (
         <div>
-            <Trigger popup={list} popupAlign={{ overflow: { adjust: false, flip: true } }} action={["click"]}>
+            <Trigger destroyPopupOnHide={true} popup={list} popupAlign={{ overflow: { adjust: false, flip: true } }} action={["click"]}>
                 <button>按钮</button>
             </Trigger>
         </div>

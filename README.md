@@ -10,37 +10,57 @@
 
 # xy-trigger
 
-基于`React Hooks` + `typescript`的基础组件
+触发器组件，包裹一个元素，再此元素被触发时，弹出内容
+
+> Tips: 如果自定义 prefixCls , 必须确保提供的样式有动画或者过度，并且有 position: absolute, 不然元素宽度是 100%
 
 ## 安装
 
 ```bash
 # yarn
-yarn add xy-trigger
+yarn add xy-trigger classnames utils-dom utils-hooks
 ```
 
 ## 使用例子
 
-```ts
+```tsx
 import React from "react";
 import ReactDOM from "react-dom";
-import XyTrigger from "xy-trigger";
-ReactDOM.render(<XyTrigger />, container);
+import Trigger from "xy-trigger";
+ReactDOM.render(
+    <Trigger popup={<span>弹出内容</span>}>
+        <button>按钮</button>
+    </Trigger>,
+    container
+);
 ```
 
 ## API
 
-| 属性     | 说明                                                               | 类型           | 默认值    |
-| -------- | ------------------------------------------------------------------ | -------------- | --------- |
-| ghost    | 幽灵属性，使按钮背景透明                                           | boolean        | false     |
-| long     | 是否长按钮                                                         | boolean        | false     |
-| icon     | 设置按钮的图标类型                                                 | IconDefinition | -         |
-| loading  | 设置按钮载入状态                                                   | boolean        | `false`   |
-| disabled | 按钮失效状态                                                       | boolean        | `false`   |
-| shape    | 设置按钮形状，可选值为 `circle` 或者不设                           | string         | -         |
-| size     | 设置按钮大小，可选值为 `small` `large` 或者不设                    | string         | `default` |
-| type     | 设置按钮类型，可选值为 `primary` `dashed` `text` `danger` 或者不设 | string         | -         |
-| onClick  | `click` 事件的 handler                                             | function       | -         |
+| 属性               | 说明                   | 类型                       | 默认值    |
+| ------------------ | ---------------------- | -------------------------- | --------- |
+| visible            | 是否可视               | boolean                    | 无        |
+| defaultVisible     | 默认是否可视           | boolean                    | 无        |
+| children           | 包裹元素               | React.ReactNode            | 无        |
+| popup              | 弹出内容               | React.ReactNode            | 无        |
+| popupClassName     | 弹出内容类名           | string                     | 无        |
+| popupAlign         | 对齐选项               | DomAlignOption             | 无        |
+| offsetSize         | 偏移距离               | number                     | 6         |
+| destroyPopupOnHide | 是否隐藏时销毁         | boolean                    | false     |
+| placement          | 显示方向               | PlacementType              | 无        |
+| onChange           | 改变是否可视事件       | (visible: boolean) => void | 无        |
+| action             | 触发方式               | TriggerAction[]            | ['hover'] |
+| mouseDelay         | 鼠标事件判定延迟       | number                     | 300       |
+| stretch            | 是否宽度与目标宽度对齐 | boolean                    | 无        |
+| popupClickHide     | 包裹元素点击是否隐藏   | boolean                    | false     |
+
+### PlacementType
+
+> "left" | "right" | "top" | "bottom" | "leftTop" | "leftBottom" | "rightTop" | "rightBottom" | "topLeft" | "topRight" | "bottomLeft" | "bottomRight"
+
+### TriggerAction
+
+> "hover" | "click" | "focus" | "contextMenu"
 
 ## 开发
 

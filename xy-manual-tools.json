@@ -1,7 +1,22 @@
 [
     {
         "name": "Simple",
-        "title": "简答例子",
-        "desc": "简答例子的一段描述。"
+        "title": "下拉列表",
+        "desc": "弹出下拉列表， 不允许微调。"
+    },
+    {
+        "name": "Hover",
+        "title": "触发方式",
+        "desc": "支持 click 点击触发, hover 移入触发, focus 焦点触发, contextMenu 右键触发"
+    },
+    {
+        "name": "DestroyPopupOnHide",
+        "title": "隐藏时销毁",
+        "desc": "设置 destroyPopupOnHide 属性，再 popup 隐藏时候从DOM上删除。"
+    },
+    {
+        "name": "PopupClickHide",
+        "title": "popup点击隐藏",
+        "desc": "设置 popupClickHide 属性，点击 popup 时也隐藏。"
     }
 ]

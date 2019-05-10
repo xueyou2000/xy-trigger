@@ -1,11 +1,23 @@
 import React from "react";
-import { render } from "react-testing-library";
-import Component from "../src";
+import { render, fireEvent } from "react-testing-library";
+import Trigger from "../src";
 
-describe("component", () => {
+describe("Trigger", () => {
     test("render", () => {
-        const wrapper = render(<Component />);
-        const div = wrapper.getByText("Hello");
-        expect(div.textContent).toBe("Hello");
+        const container = document.createElement("div");
+        document.body.append(container);
+        const wrapper = render(
+            <Trigger getContainer={() => container} action={["click"]}>
+                <button>按钮</button>
+            </Trigger>,
+            { container }
+        );
+
+        const trigger = container.querySelector(".xy-trigger");
+        expect(trigger.classList.contains("xy-trigger-open")).toBeFalsy();
+        fireEvent.click(wrapper.getByText("按钮"));
+        expect(trigger.classList.contains("xy-trigger-open")).toBeTruthy();
+        fireEvent.click(wrapper.getByText("按钮"));
+        expect(trigger.classList.contains("xy-trigger-open")).toBeFalsy();
     });
 });
