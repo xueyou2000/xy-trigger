@@ -41,7 +41,9 @@ export function Trigger(props: TriggerProps) {
         triggerRef,
         ref,
         (act, actived, event) => {
-            doSetVisible(actived);
+            if (!isControll) {
+                doSetVisible(actived);
+            }
         },
         { trigger: action, mouseDelay },
         [flip, visible]
