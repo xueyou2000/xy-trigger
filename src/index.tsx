@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
 import { alignElement } from "utils-dom";
-import { useControll, useOutsideClick, usePortal, useTranstion, useTriggerChain, TriggerAction, TriggerWrap, EXITED } from "utils-hooks";
+import { useControll, useOutsideClick, usePortal, useTranstion, useTriggerChain, TriggerAction, TriggerWrap, EXITED, UNMOUNTED } from "utils-hooks";
 import { TriggerProps } from "./interface";
 import { getPlacements } from "./placements";
 
@@ -61,9 +61,13 @@ export function Trigger(props: TriggerProps) {
     );
 
     useEffect(() => {
-        if (visible && ref.current) {
+        const popupEle = ref.current as HTMLElement;
+        if (!popupEle) {
+            return;
+        }
+        if (visible) {
             const config = Object.assign({}, getPlacements(offsetSize)[placement], popupAlign);
-            const revise = alignElement(ref.current, triggerRef.current, config);
+            const revise = alignElement(popupEle, triggerRef.current, config);
 
             if (revise.x && !revise.y) {
                 setFlip(config.flipX);
@@ -74,8 +78,11 @@ export function Trigger(props: TriggerProps) {
             } else {
                 setFlip(null);
             }
+        } else if (state === EXITED || state === UNMOUNTED) {
+            popupEle.style.left = "-100%";
+            popupEle.style.display = "block";
         }
-    }, [visible]);
+    }, [visible, state]);
 
     function doSetVisible(_visible: boolean) {
         if (_visible === visible) {

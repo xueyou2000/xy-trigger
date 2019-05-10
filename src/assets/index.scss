@@ -2,13 +2,16 @@ $Trigger: "xy-trigger";
 
 .#{$Trigger} {
     position: absolute;
+    left: -100%;
+    top: -100%;
     animation: 0.3s triggerZoomOut;
 }
+
 .#{$Trigger}-open {
     animation: 0.3s triggerZoomIn;
 }
-.#{$Trigger}-state-exited,
-.#{$Trigger}-state-unmounted {
+
+.#{$Trigger}-state-exited {
     display: none;
 }
 
