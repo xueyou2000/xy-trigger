@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.71 (Sat May 11 2019)
+
+-   修复`trigger`元素的过度状态样式
+
 ## 0.0.7 (Sat May 11 2019)
 
 -   增加`allowCustom`属性, 来允许自定义组件用作触发器接受事件

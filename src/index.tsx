@@ -113,7 +113,7 @@ export function Trigger(props: TriggerProps) {
 
     return (
         <div>
-            {TriggerWrap(children, triggerRef, classNames(`${prefixCls}-trigger`, `${prefixCls}-state-${state}`), allowCustom)}
+            {TriggerWrap(children, triggerRef, classNames(`${prefixCls}-trigger`, `${prefixCls}-trigger-state-${state}`), allowCustom)}
             {renderPortal(
                 destroyPopupOnHide === true && (!visible && state === EXITED) ? null : (
                     <div className={classString} style={Object.assign({}, style, style1)} ref={ref} onClick={clickHandle}>

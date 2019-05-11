@@ -27,9 +27,13 @@ export default function() {
                 <button>hover</button>
             </Trigger>
 
+            <br />
+
             <Trigger popup={list} action={["focus"]}>
-                <button>focus</button>
+                <input type="text" />
             </Trigger>
+
+            <br />
 
             <Trigger popup={list} action={["contextMenu"]}>
                 <button>contextMenu</button>
