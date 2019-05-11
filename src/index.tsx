@@ -23,6 +23,8 @@ export function Trigger(props: TriggerProps) {
         destroyPopupOnHide,
         offsetSize,
         stretch,
+        onAlign,
+        allowCustom,
         mouseDelay = 100,
         action = ["hover" as TriggerAction],
         onChange,
@@ -77,7 +79,9 @@ export function Trigger(props: TriggerProps) {
         if (visible) {
             const config = Object.assign({}, getPlacements(offsetSize)[placement], popupAlign);
             const revise = alignElement(popupEle, triggerRef.current, config as DomAlignOption);
-
+            if (onAlign) {
+                onAlign(triggerRef.current, popupEle);
+            }
             if (revise.x && !revise.y) {
                 setFlip(config.flipX);
             } else if (!revise.x && revise.y) {
@@ -108,8 +112,8 @@ export function Trigger(props: TriggerProps) {
     }
 
     return (
-        <React.Fragment>
-            {TriggerWrap(children, triggerRef)}
+        <div>
+            {TriggerWrap(children, triggerRef, classNames(`${prefixCls}-trigger`, `${prefixCls}-state-${state}`), allowCustom)}
             {renderPortal(
                 destroyPopupOnHide === true && (!visible && state === EXITED) ? null : (
                     <div className={classString} style={Object.assign({}, style, style1)} ref={ref} onClick={clickHandle}>
@@ -117,7 +121,7 @@ export function Trigger(props: TriggerProps) {
                     </div>
                 ),
             )}
-        </React.Fragment>
+        </div>
     );
 }
 

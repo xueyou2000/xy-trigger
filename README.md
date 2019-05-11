@@ -31,28 +31,30 @@ ReactDOM.render(
     <Trigger popup={<span>弹出内容</span>}>
         <button>按钮</button>
     </Trigger>,
-    container
+    container,
 );
 ```
 
 ## API
 
-| 属性               | 说明                   | 类型                       | 默认值    |
-| ------------------ | ---------------------- | -------------------------- | --------- |
-| visible            | 是否可视               | boolean                    | 无        |
-| defaultVisible     | 默认是否可视           | boolean                    | 无        |
-| children           | 包裹元素               | React.ReactNode            | 无        |
-| popup              | 弹出内容               | React.ReactNode            | 无        |
-| popupClassName     | 弹出内容类名           | string                     | 无        |
-| popupAlign         | 对齐选项               | DomAlignOption             | 无        |
-| offsetSize         | 偏移距离               | number                     | 6         |
-| destroyPopupOnHide | 是否隐藏时销毁         | boolean                    | false     |
-| placement          | 显示方向               | PlacementType              | 无        |
-| onChange           | 改变是否可视事件       | (visible: boolean) => void | 无        |
-| action             | 触发方式               | TriggerAction[]            | ['hover'] |
-| mouseDelay         | 鼠标事件判定延迟       | number                     | 300       |
-| stretch            | 是否宽度与目标宽度对齐 | boolean                    | 无        |
-| popupClickHide     | 包裹元素点击是否隐藏   | boolean                    | false     |
+| 属性               | 说明                   | 类型                                               | 默认值    |
+| ------------------ | ---------------------- | -------------------------------------------------- | --------- |
+| visible            | 是否可视               | boolean                                            | 无        |
+| defaultVisible     | 默认是否可视           | boolean                                            | 无        |
+| children           | 包裹元素               | React.ReactNode                                    | 无        |
+| popup              | 弹出内容               | React.ReactNode                                    | 无        |
+| popupClassName     | 弹出内容类名           | string                                             | 无        |
+| popupAlign         | 对齐选项               | DomAlignOption                                     | 无        |
+| offsetSize         | 偏移距离               | number                                             | 6         |
+| destroyPopupOnHide | 是否隐藏时销毁         | boolean                                            | false     |
+| placement          | 显示方向               | PlacementType                                      | 无        |
+| onChange           | 改变是否可视事件       | (visible: boolean) => void                         | 无        |
+| onAlign            | 对齐事件               | (trigger: HTMLElement, popup: HTMLElement) => void | 无        |
+| action             | 触发方式               | TriggerAction[]                                    | ['hover'] |
+| mouseDelay         | 鼠标事件判定延迟       | number                                             | 300       |
+| stretch            | 是否宽度与目标宽度对齐 | boolean                                            | 无        |
+| allowCustom        | 允许自定义组件         | boolean                                            | false     |
+| popupClickHide     | 包裹元素点击是否隐藏   | boolean                                            | false     |
 
 ### PlacementType
 

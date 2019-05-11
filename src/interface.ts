@@ -85,6 +85,15 @@ export interface TriggerProps {
      */
     onChange?: (visible: boolean) => void;
     /**
+     * 对齐事件
+     */
+    onAlign?: (trigger: HTMLElement, popup: HTMLElement) => void;
+    /**
+     * 允许自定义组件
+     * @description 默认情况下，自定义组件会被div包裹，来接受事件，设置此属性后不进行包裹
+     */
+    allowCustom?: boolean;
+    /**
      * 触发方式
      * @description 默认 ['hover']
      */

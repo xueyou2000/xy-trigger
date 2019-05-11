@@ -8393,10 +8393,10 @@ utils-hooks@0.0.65, utils-hooks@^0.0.65:
   resolved "https://registry.npm.taobao.org/utils-hooks/download/utils-hooks-0.0.65.tgz#abb9e24413ebee7ef3e563b1967e890ba4e077dc"
   integrity sha1-q7niRBPr7n7z5WOxln6JC6Tgd9w=
 
-utils-hooks@0.0.68:
-  version "0.0.68"
-  resolved "https://registry.npm.taobao.org/utils-hooks/download/utils-hooks-0.0.68.tgz#097a688ee58f7759cc5de05d97c272f81cd5b076"
-  integrity sha1-CXpojuWPd1nMXeBdl8Jy+BzVsHY=
+utils-hooks@0.0.69:
+  version "0.0.69"
+  resolved "https://registry.npm.taobao.org/utils-hooks/download/utils-hooks-0.0.69.tgz#b711fb1aaea7056f3ad662db5e71cfd034ca71af"
+  integrity sha1-txH7Gq6nBW861mLbXnHP0DTKca8=
 
 utils-merge@1.0.1:
   version "1.0.1"
