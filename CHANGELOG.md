@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.6 (Sat May 11 2019)
+
+-   修复由于缩放动画, 获取高度和宽度不稳定的情况
+
 ## 0.0.5 (Fri May 10 2019)
 
 -   隐藏时设置`left`, `top` 并且不设置`display: none;`, 因为如果此时`popup`中有`input`并想置为焦点，会失败

@@ -1,9 +1,10 @@
 import classNames from "classnames";
-import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { alignElement } from "utils-dom";
-import { useControll, useOutsideClick, usePortal, useTranstion, useTriggerChain, TriggerAction, TriggerWrap, EXITED, UNMOUNTED } from "utils-hooks";
+import { EXITED, TriggerAction, TriggerWrap, UNMOUNTED, useControll, useOutsideClick, usePortal, useTranstion, useTriggerChain } from "utils-hooks";
 import { TriggerProps } from "./interface";
 import { getPlacements } from "./placements";
+import { DomAlignOption } from "utils-dom/es/AlignDom/interface";
 
 // Tips: 自定义的 prefixCls , 必须确保提供的样式有动画或者过度，并且有 position: absolute, 不然元素宽度是100%
 
@@ -24,7 +25,7 @@ export function Trigger(props: TriggerProps) {
         stretch,
         mouseDelay = 100,
         action = ["hover" as TriggerAction],
-        onChange
+        onChange,
     } = props;
     const [renderPortal] = usePortal(popupClassName, getContainer);
     const [visible, setVisible, isControll] = useControll(props, "visible", "defaultVisible", false);
@@ -34,7 +35,7 @@ export function Trigger(props: TriggerProps) {
     const opening = state.indexOf("en") !== -1;
     const classString = classNames(prefixCls, className, `${prefixCls}-${flip || placement}`, `${prefixCls}-state-${state}`, { [`${prefixCls}-open`]: opening });
     const style1: React.CSSProperties = {
-        width: stretch && triggerRef.current ? (triggerRef.current as HTMLElement).clientWidth : null
+        width: stretch && triggerRef.current ? (triggerRef.current as HTMLElement).clientWidth : null,
     };
 
     const setActived = useTriggerChain(
@@ -46,7 +47,7 @@ export function Trigger(props: TriggerProps) {
             }
         },
         { trigger: action, mouseDelay },
-        [flip, visible]
+        [flip, visible],
     );
 
     useOutsideClick(
@@ -57,8 +58,16 @@ export function Trigger(props: TriggerProps) {
                 setActived(false);
             }
         },
-        [visible]
+        [visible],
     );
+
+    useEffect(() => {
+        const popupEle = ref.current as HTMLElement;
+        if ((popupEle && state === EXITED) || state === UNMOUNTED) {
+            popupEle.style.left = "-100%";
+            popupEle.style.display = "block";
+        }
+    }, [state]);
 
     useEffect(() => {
         const popupEle = ref.current as HTMLElement;
@@ -67,7 +76,7 @@ export function Trigger(props: TriggerProps) {
         }
         if (visible) {
             const config = Object.assign({}, getPlacements(offsetSize)[placement], popupAlign);
-            const revise = alignElement(popupEle, triggerRef.current, config);
+            const revise = alignElement(popupEle, triggerRef.current, config as DomAlignOption);
 
             if (revise.x && !revise.y) {
                 setFlip(config.flipX);
@@ -78,11 +87,8 @@ export function Trigger(props: TriggerProps) {
             } else {
                 setFlip(null);
             }
-        } else if (state === EXITED || state === UNMOUNTED) {
-            popupEle.style.left = "-100%";
-            popupEle.style.display = "block";
         }
-    }, [visible, state]);
+    }, [visible]);
 
     function doSetVisible(_visible: boolean) {
         if (_visible === visible) {
@@ -109,7 +115,7 @@ export function Trigger(props: TriggerProps) {
                     <div className={classString} style={Object.assign({}, style, style1)} ref={ref} onClick={clickHandle}>
                         {popup}
                     </div>
-                )
+                ),
             )}
         </React.Fragment>
     );
