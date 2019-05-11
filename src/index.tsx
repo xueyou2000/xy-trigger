@@ -44,7 +44,7 @@ export function Trigger(props: TriggerProps) {
         triggerRef,
         ref,
         (act, actived, event) => {
-            if (!isControll) {
+            if (action && action.length > 0) {
                 doSetVisible(actived);
             }
         },

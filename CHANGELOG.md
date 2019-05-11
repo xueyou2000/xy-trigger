@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.72 (Sat May 11 2019)
+
+-   `action`为空不进行对齐
+
 ## 0.0.71 (Sat May 11 2019)
 
 -   修复`trigger`元素的过度状态样式
