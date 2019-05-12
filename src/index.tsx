@@ -24,7 +24,7 @@ export function Trigger(props: TriggerProps) {
         offsetSize,
         stretch,
         onAlign,
-        getAlignFunc,
+        alignRef,
         allowCustom,
         mouseDelay = 100,
         action = ["hover" as TriggerAction],
@@ -72,14 +72,14 @@ export function Trigger(props: TriggerProps) {
         }
     }, [state]);
 
-    function align() {
+    function align(restAnimation = true) {
         const popupEle = ref.current as HTMLElement;
         if (!popupEle) {
             return;
         }
         if (visible) {
             const config = Object.assign({}, getPlacements(offsetSize)[placement], popupAlign);
-            const revise = alignElement(popupEle, triggerRef.current, config as DomAlignOption);
+            const revise = alignElement(popupEle, triggerRef.current, config as DomAlignOption, restAnimation);
             if (onAlign) {
                 onAlign(triggerRef.current, popupEle);
             }
@@ -95,8 +95,8 @@ export function Trigger(props: TriggerProps) {
         }
     }
 
-    if (getAlignFunc) {
-        getAlignFunc(align);
+    if (alignRef) {
+        alignRef.current = align;
     }
 
     useEffect(align, [visible]);

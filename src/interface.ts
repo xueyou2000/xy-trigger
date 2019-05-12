@@ -96,7 +96,7 @@ export interface TriggerProps {
     /**
      * 获取对齐函数
      */
-    getAlignFunc?: (align: Function) => void;
+    alignRef?: React.MutableRefObject<Function>;
     /**
      * 触发方式
      * @description 默认 ['hover']

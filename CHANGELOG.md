@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.93 (Sun May 12 2019)
+
+-   对齐函数增加`restAnimation`参数， 避免正在显示的元素重复执行动画
+
 ## 0.0.92 (Sun May 12 2019)
 
 -   更改`onChange`签名，增加事件参数

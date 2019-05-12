@@ -55,7 +55,7 @@ ReactDOM.render(
 | stretch            | 是否宽度与目标宽度对齐 | boolean                                            | 无        |
 | allowCustom        | 允许自定义组件         | boolean                                            | false     |
 | popupClickHide     | 包裹元素点击是否隐藏   | boolean                                            | false     |
-| getAlignFunc       | 获取对齐函数           | getAlignFunc?: (align: Function) => void;          | -         |
+| alignRef           | 获取对齐函数           | React.MutableRefObject<Function>                   | -         |
 
 ### PlacementType
 
