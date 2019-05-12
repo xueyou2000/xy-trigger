@@ -1,6 +1,6 @@
 {
     "name": "xy-trigger",
-    "version": "0.0.91",
+    "version": "0.0.92",
     "description": "基于 React Hooks 的触发器组件",
     "types": "es/index.d.ts",
     "main": "es/index.js",

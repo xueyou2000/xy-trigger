@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.92 (Sun May 12 2019)
+
+-   更改`onChange`签名，增加事件参数
+
 ## 0.0.91 (Sun May 12 2019)
 
 -   修复 useTriggerChain 在没有 hover 触发选项的时候忽略

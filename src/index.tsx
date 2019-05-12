@@ -46,7 +46,7 @@ export function Trigger(props: TriggerProps) {
         ref,
         (act, actived, event) => {
             if (action && action.length > 0) {
-                doSetVisible(isControll ? !visible : actived);
+                doSetVisible(isControll ? !visible : actived, event);
             }
         },
         { trigger: action, mouseDelay },
@@ -55,9 +55,9 @@ export function Trigger(props: TriggerProps) {
 
     useOutsideClick(
         popupClickHide ? [triggerRef.current] : [ref.current, triggerRef.current],
-        () => {
+        (event: MouseEvent) => {
             if (visible) {
-                doSetVisible(false);
+                doSetVisible(false, event);
                 setActived(false);
             }
         },
@@ -101,7 +101,7 @@ export function Trigger(props: TriggerProps) {
 
     useEffect(align, [visible]);
 
-    function doSetVisible(_visible: boolean) {
+    function doSetVisible(_visible: boolean, event?: MouseEvent) {
         if (_visible === visible) {
             return;
         }
@@ -110,7 +110,7 @@ export function Trigger(props: TriggerProps) {
             setVisible(_visible);
         }
         if (onChange) {
-            onChange(_visible);
+            onChange(_visible, event);
         }
     }
 

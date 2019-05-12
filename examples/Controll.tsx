@@ -29,10 +29,15 @@ const List = React.memo(() => {
 export default function() {
     const [visible, setVisible] = useState(false);
 
+    function changeHandle(v: boolean, event: MouseEvent) {
+        console.log(event.target);
+        setVisible(v);
+    }
+
     return (
         <div>
             <button onClick={() => setVisible((prev) => !prev)}>外部主动切换</button>
-            <Trigger visible={visible} onChange={setVisible} popup={<List />} popupAlign={POPUPALIGN} action={ACTION}>
+            <Trigger visible={visible} onChange={changeHandle} popup={<List />} popupAlign={POPUPALIGN} action={ACTION}>
                 <button>按钮</button>
             </Trigger>
         </div>

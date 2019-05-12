@@ -83,7 +83,7 @@ export interface TriggerProps {
     /**
      * 改变是否可视事件
      */
-    onChange?: (visible: boolean) => void;
+    onChange?: (visible: boolean, event?: MouseEvent) => void;
     /**
      * 对齐事件
      */
