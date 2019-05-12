@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { alignElement } from "utils-dom";
-import { EXITED, TriggerAction, TriggerWrap, UNMOUNTED, useControll, useOutsideClick, usePortal, useTranstion, useTriggerChain } from "utils-hooks";
+import { EXITED, TriggerAction, UNMOUNTED, useControll, useOutsideClick, usePortal, useTranstion, useTriggerChain } from "utils-hooks";
 import { TriggerProps } from "./interface";
 import { getPlacements } from "./placements";
 import { DomAlignOption } from "utils-dom/es/AlignDom/interface";
-
+import TriggerWrap from "./TriggerWrap";
 // Tips: 自定义的 prefixCls , 必须确保提供的样式有动画或者过度，并且有 position: absolute, 不然元素宽度是100%
 
 export function Trigger(props: TriggerProps) {

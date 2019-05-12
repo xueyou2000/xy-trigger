@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.9 (Sun May 12 2019)
+
+-   修复 TriggerWrap 包裹元素时候漏掉了元素自身的 props
+
 ## 0.0.8 (Sun May 12 2019)
 
 -   修复受控模式下显示隐藏逻辑
