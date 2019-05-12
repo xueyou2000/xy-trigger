@@ -18,5 +18,10 @@
         "name": "PopupClickHide",
         "title": "popup点击隐藏",
         "desc": "设置 popupClickHide 属性，点击 popup 时也隐藏。"
+    },
+    {
+        "name": "Controll",
+        "title": "受控可视",
+        "desc": "主动设置 visible 可以控制可视状态。"
     }
 ]
