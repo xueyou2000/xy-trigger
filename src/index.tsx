@@ -24,6 +24,7 @@ export function Trigger(props: TriggerProps) {
         offsetSize,
         stretch,
         onAlign,
+        getAlignFunc,
         allowCustom,
         mouseDelay = 100,
         action = ["hover" as TriggerAction],
@@ -71,7 +72,7 @@ export function Trigger(props: TriggerProps) {
         }
     }, [state]);
 
-    useEffect(() => {
+    function align() {
         const popupEle = ref.current as HTMLElement;
         if (!popupEle) {
             return;
@@ -92,7 +93,13 @@ export function Trigger(props: TriggerProps) {
                 setFlip(null);
             }
         }
-    }, [visible]);
+    }
+
+    if (getAlignFunc) {
+        getAlignFunc(align);
+    }
+
+    useEffect(align, [visible]);
 
     function doSetVisible(_visible: boolean) {
         if (_visible === visible) {

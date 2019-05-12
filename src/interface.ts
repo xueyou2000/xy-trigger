@@ -94,6 +94,10 @@ export interface TriggerProps {
      */
     allowCustom?: boolean;
     /**
+     * 获取对齐函数
+     */
+    getAlignFunc?: (align: Function) => void;
+    /**
      * 触发方式
      * @description 默认 ['hover']
      */

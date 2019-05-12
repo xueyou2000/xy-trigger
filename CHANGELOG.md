@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.73 (Sun May 12 2019)
+
+-   更新依赖
+-   增加`getAlignFunc`属性获取对齐函数, 用于主动对齐
+
 ## 0.0.72 (Sat May 11 2019)
 
 -   `action`为空不进行对齐
