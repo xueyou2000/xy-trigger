@@ -37,6 +37,7 @@ export default function() {
     return (
         <div>
             <button onClick={() => setVisible((prev) => !prev)}>外部主动切换</button>
+            <br />
             <Trigger visible={visible} onChange={changeHandle} popup={<List />} popupAlign={POPUPALIGN} action={ACTION}>
                 <button>按钮</button>
             </Trigger>
