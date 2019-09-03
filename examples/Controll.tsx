@@ -30,7 +30,6 @@ export default function() {
     const [visible, setVisible] = useState(false);
 
     function changeHandle(v: boolean, event: MouseEvent) {
-        console.log(event.target);
         setVisible(v);
     }
 

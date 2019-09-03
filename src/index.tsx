@@ -28,7 +28,7 @@ export function Trigger(props: TriggerProps) {
         allowCustom,
         mouseDelay = 100,
         action = ["hover" as TriggerAction],
-        onChange
+        onChange,
     } = props;
     const [renderPortal] = usePortal(popupClassName, getContainer);
     const [visible, setVisible, isControll] = useControll(props, "visible", "defaultVisible", false);
@@ -38,7 +38,7 @@ export function Trigger(props: TriggerProps) {
     const opening = state.indexOf("en") !== -1;
     const classString = classNames(prefixCls, className, `${prefixCls}-${flip || placement}`, `${prefixCls}-state-${state}`, { [`${prefixCls}-open`]: opening });
     const style1: React.CSSProperties = {
-        width: stretch && triggerRef.current ? (triggerRef.current as HTMLElement).clientWidth : null
+        width: stretch && triggerRef.current ? (triggerRef.current as HTMLElement).clientWidth : null,
     };
 
     const setActived = useTriggerChain(
@@ -50,7 +50,7 @@ export function Trigger(props: TriggerProps) {
             }
         },
         { trigger: action, mouseDelay },
-        [flip, visible]
+        [flip, visible],
     );
 
     useOutsideClick(
@@ -61,7 +61,7 @@ export function Trigger(props: TriggerProps) {
                 setActived(false);
             }
         },
-        [visible]
+        [visible],
     );
 
     useEffect(() => {
@@ -126,7 +126,7 @@ export function Trigger(props: TriggerProps) {
                     <div className={classString} style={Object.assign({}, style, style1)} ref={ref} onClick={clickHandle}>
                         {popup}
                     </div>
-                )
+                ),
             )}
         </React.Fragment>
     );
